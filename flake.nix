@@ -13,8 +13,9 @@
           perforator = pkgs.callPackage ./perforator.nix { };
           scnlib = pkgs.callPackage ./scnlib.nix { };
           kantu_compare = pkgs.callPackage ./kantu_compare/default.nix { };
-          igraph = pkgs.callPackage ./igraph.nix { };
-          ggen = pkgs.callPackage ./ggen.nix { igraph = self.packages.${system}.igraph; };
+
+          igraph_0_5_8 = pkgs.callPackage ./igraph.nix { };
+          ggen = pkgs.callPackage ./ggen.nix { igraph = self.packages.${system}.igraph_0_5_8; };
 
           # Custom glibc and libgcc to build with -fPIC
           glibc = pkgs.glibc.overrideAttrs (oldAttrs: {

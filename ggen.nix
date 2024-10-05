@@ -27,8 +27,6 @@ stdenv.mkDerivation {
   postPatch = ''
     cp $VERSION_M4 version.m4
     sed -i 's/AM_INIT_AUTOMAKE(\[-Wall -Werror gnu\])/AM_INIT_AUTOMAKE([-Wall gnu subdir-objects])/g' configure.ac
-    # sed -i 's/igraph_get_eid(\([^)]*\))/igraph_get_eid(\1,true)/g' src/utils.c
-    # sed -i 's/igraph_adjacency(\([^)]*\))/igraph_adjacency(\1,IGRAPH_NO_LOOPS)/g' src/graph-generation.c
   '';
 
   #autoreconfPhase = "./autogen.sh";
@@ -41,6 +39,5 @@ stdenv.mkDerivation {
     description = "a library for the creation of randomly generated workloads for scheduling simulations";
     homepage = "https://github.com/cordeiro/ggen";
     platforms = platforms.all;              
-    #broken = true; # igraph is too new in nixpkgs
   };
 }
